@@ -1,0 +1,16 @@
+on:
+  pull_request:
+
+# no permissions
+permissions: {}
+
+jobs:
+  nefarious:
+    runs-on: ubuntu-latest
+    steps:
+      # - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      - name: try to do something bad
+        run: |
+          mysecret=${{ secrets.NOT_REALLY_SECRET }}
+          echo length of secret is: ${#mysecret}
+          echo $mysecret | sed 's/-/_/g'
