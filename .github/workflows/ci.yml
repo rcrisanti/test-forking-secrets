@@ -1,9 +1,6 @@
 on:
   pull_request:
 
-# no permissions
-permissions: {}
-
 jobs:
   nefarious:
     runs-on: ubuntu-latest
