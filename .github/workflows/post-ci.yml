@@ -21,6 +21,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: pr_number
-          run_id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ github.event.workflow_run.id }}
       - name: get pr number
         run: cat pr_number
