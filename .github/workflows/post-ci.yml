@@ -24,5 +24,6 @@ jobs:
         with:
           name: pr_number
           run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: get pr number
         run: cat pr_number
