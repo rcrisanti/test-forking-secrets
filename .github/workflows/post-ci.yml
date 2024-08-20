@@ -17,6 +17,8 @@ jobs:
 
   get-pr-number:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
     steps:
       - uses: actions/download-artifact@v4
         with:
