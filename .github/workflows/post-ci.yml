@@ -1,0 +1,29 @@
+name: post-ci
+
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+
+jobs:
+  access-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: access secret
+        run: |
+          mysecret=${{ secrets.NOT_REALLY_SECRET }}
+          echo length of secret is: ${#mysecret}
+          echo $mysecret | sed 's/-/_/g'
+
+  get-pr-number:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr_number
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: get pr number
+        run: cat pr_number
