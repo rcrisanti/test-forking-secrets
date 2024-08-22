@@ -1,0 +1,14 @@
+name: dispatch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  access-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: access secret
+        run: |
+          mysecret=${{ secrets.NOT_REALLY_SECRET }}
+          echo length of secret is: ${#mysecret}
+          echo $mysecret | sed 's/-/_/g'
