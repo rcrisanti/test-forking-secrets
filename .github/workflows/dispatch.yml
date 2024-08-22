@@ -7,6 +7,10 @@ jobs:
   access-secret:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git rev-parse HEAD
+          git branch
       - name: access secret
         run: |
           mysecret=${{ secrets.NOT_REALLY_SECRET }}
